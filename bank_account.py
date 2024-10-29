@@ -18,15 +18,18 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         print(f"Amount deposited: ${amount} | New balance: ${self.balance}")
+        return amount
 
     # Withdraw method
     def withdraw(self, amount):
         self.balance -= amount
         if self.balance > amount:
             print(f"Amount withdrawn: ${amount} | New balance: ${self.balance}")
+            return amount
         else:
             self.balance += 10
             print("Insufficient funds. Overdraft fee of $10 charged to your account.")
+            return amount
     
     # Prints total balance
     def get_balance(self):
@@ -39,10 +42,38 @@ class BankAccount:
 
     # Print method
     def print_statement(self):
-        print(f"{self.name}\nAccount No.: {self.account}\nAccount Type: {self.type}\nBalance: ${self.balance}")
+        print(f"\n{self.name}\nAccount No.: {self.mask_account_number()}\nAccount Type: {self.type}\nBalance: ${self.balance}")
 
 
-# # Bank account examples
-# bank_account1 = BankAccount("Ron", 50000, "chequing")
-# bank_account1.print_statement()
+# Instantiate 3 Bank Accounts
+bank_account1 = BankAccount("Ron Weasley", 500, "Chequing")
+bank_account2 = BankAccount("Hermione Granger", 1000, "Savings")
+bank_account3 = BankAccount("Harry Potter", 2000, "Savings")
+
+# Print Statements
+bank_account1.print_statement()
+bank_account2.print_statement()
+bank_account3.print_statement()
+print("-------------------------------------")
+
+#Deposit amount 
+amount_deposit = bank_account1.deposit(50)
+print(f"Successfully deposited ${amount_deposit} to {bank_account1.name}'s account")
+
+# Print statement
+bank_account1.print_statement()
+
+#Add interest
+interest_amount = bank_account1.add_interest()
+print(f"{bank_account1.name}'s bank account earn interest of {interest_amount}")
+
+# Print statement
+bank_account1.print_statement()
+
+# Withdraw amount
+withdraw_amount = bank_account1.withdraw(700)
+print(f"Successfully withdrew ${withdraw_amount} to {bank_account1.name}'s account")
+
+# Print statement
+bank_account1.print_statement()
 

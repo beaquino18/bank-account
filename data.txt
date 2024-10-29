@@ -1,0 +1,4 @@
+aman,1234,Andy Allman,Savings,1000,10000000
+betho,pa$$word,Beth Beto,Chequing,2500.0,10000001
+camcam,default,Cameron Clay,Savings,4300.0,10000002
+berna18,1,Bernadette,Chequing,2720.0,72567156
