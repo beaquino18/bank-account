@@ -263,9 +263,14 @@ class Bank:
           continue
       
     
-    def statement():
-       #TODO
-       return
+    def statement(user):
+      print("----- ACCOUNT STATEMENT -----")
+      print(f"Username: {user["Username"]}")
+      print(f"Full Name: {user["Full Name"]}")
+      print(f"Account Type: {user["Account Type"]}")
+      print(f"Account Number: {user["Account Number"]}")
+      print(f"Current Balance: ${user["Balance"]}")
+      print("\n================================\n")
     
 
 
@@ -310,7 +315,7 @@ class Bank:
           Bank.transfer(user)
         elif choice == '4':
           Bank.clear_screen()
-          Bank.statement()
+          Bank.statement(user)
         elif choice == '5':
           print("Logging off...Goodbye!\n")
           sys.exit()
@@ -341,8 +346,6 @@ class Bank:
             break
           else:
             print("Invalid option. Please try again.")
-
-
 
 
 Bank.run_application()
