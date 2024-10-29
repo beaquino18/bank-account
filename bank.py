@@ -186,7 +186,6 @@ class Bank:
           continue
       
       
-    
     def transfer():
        #TODO
        return
