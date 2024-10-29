@@ -28,7 +28,9 @@ class Bank:
       print('----- ACCOUNT INFORMATION -----')
       print(' 1. Deposit')
       print(' 2. Withdrawal')
-      print(' 3. Log Out')
+      print(' 3. Transfer')
+      print(' 4. Print statement')
+      print(' 5. Log Out')
 
     # Option to create account - STRETCH CHALLENGE
     def create_account():
@@ -186,9 +188,80 @@ class Bank:
           continue
       
       
-    def transfer():
-       #TODO
-       return
+    def transfer(user):
+      while True:
+        print("----- TRANSFER -----")
+        print("1. Transfer money from your account to another\n2. Return to main menu\n")
+        choice = input("Choose an option: ")
+        
+        Bank.clear_screen()
+        
+        if choice == "1":
+          Bank.transfer_to_another(user)
+        elif choice == "2":
+          return
+        else:
+          print("Invalid option. Please try again.\n")
+    
+    def transfer_to_another(user):
+      balance = float(user["Balance"])
+      print(f"Your Account Balance: ${balance}")
+      
+      while True:
+        try:
+          transfer_amount = float(input("Enter the amount you want to transfer: "))
+          
+          if transfer_amount <= 0:
+            print("\n================================")
+            print(f"Transfer amount must be greater than zero. Please try again")
+            print("================================\n")
+            continue
+          
+          if transfer_amount > balance:
+            print("\n================================")
+            print(f"Insufficient amount for this transfer.")
+            print("================================\n")
+            return
+          
+          account_number = input("Enter the account number you'd like to transfer money to: ")
+          data_list = Bank.load_data()
+          recipient_found = False
+          
+          for i, recipient in enumerate(data_list):
+            if recipient[5] == account_number:
+              recipient_found = True
+              recipient_balance = float(recipient[4])
+              
+              user["Balance"] = balance - transfer_amount
+              recipient_balance += transfer_amount
+              
+              data_list[i][4] = str(recipient_balance)
+              
+              for j, entry in enumerate(data_list):
+                if entry[0] == user["Username"]:
+                  data_list[j][4] = str(user["Balance"])
+                  break
+                
+              # Save updated data back to data.txt
+              with open('data.txt', 'w') as f:
+                for account in data_list:
+                  f.write(','.join(account) + '\n')
+              
+              print("\n================================")
+              print(f"Successfully transferred: ${transfer_amount} to {recipient[2]}'s account")
+              print(f"Your New Balance: ${user["Balance"]}")
+              print("================================\n")
+              return
+            
+            if not recipient_found:
+              print("\n================================")
+              print("Recipient account number not found!! Please try again.")
+              print("================================\n")
+              
+        except ValueError:
+          print("Invalid amount. Please enter a valid number.")
+          continue
+      
     
     def statement():
        #TODO
@@ -233,6 +306,12 @@ class Bank:
           Bank.clear_screen()
           Bank.withdraw(user)
         elif choice == '3':
+          Bank.clear_screen()
+          Bank.transfer(user)
+        elif choice == '4':
+          Bank.clear_screen()
+          Bank.statement()
+        elif choice == '5':
           print("Logging off...Goodbye!\n")
           sys.exit()
         else:

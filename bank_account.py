@@ -45,35 +45,39 @@ class BankAccount:
         print(f"\n{self.name}\nAccount No.: {self.mask_account_number()}\nAccount Type: {self.type}\nBalance: ${self.balance}")
 
 
-# Instantiate 3 Bank Accounts
-bank_account1 = BankAccount("Ron Weasley", 500, "Chequing")
-bank_account2 = BankAccount("Hermione Granger", 1000, "Savings")
-bank_account3 = BankAccount("Harry Potter", 2000, "Savings")
+def run_application():
+    # Instantiate 3 Bank Accounts
+    bank_account1 = BankAccount("Ron Weasley", 500, "Chequing")
+    bank_account2 = BankAccount("Hermione Granger", 1000, "Savings")
+    bank_account3 = BankAccount("Harry Potter", 2000, "Savings")
 
-# Print Statements
-bank_account1.print_statement()
-bank_account2.print_statement()
-bank_account3.print_statement()
-print("-------------------------------------")
+    # Print Statements
+    bank_account1.print_statement()
+    bank_account2.print_statement()
+    bank_account3.print_statement()
+    print("-------------------------------------")
 
-#Deposit amount 
-amount_deposit = bank_account1.deposit(50)
-print(f"Successfully deposited ${amount_deposit} to {bank_account1.name}'s account")
+    #Deposit amount 
+    amount_deposit = bank_account1.deposit(50)
+    print(f"Successfully deposited ${amount_deposit} to {bank_account1.name}'s account")
 
-# Print statement
-bank_account1.print_statement()
+    # Print statement
+    bank_account1.print_statement()
 
-#Add interest
-interest_amount = bank_account1.add_interest()
-print(f"{bank_account1.name}'s bank account earn interest of {interest_amount}")
+    #Add interest
+    interest_amount = bank_account1.add_interest()
+    print(f"{bank_account1.name}'s bank account earn interest of {interest_amount}")
 
-# Print statement
-bank_account1.print_statement()
+    # Print statement
+    bank_account1.print_statement()
 
-# Withdraw amount
-withdraw_amount = bank_account1.withdraw(700)
-print(f"Successfully withdrew ${withdraw_amount} to {bank_account1.name}'s account")
+    # Withdraw amount
+    withdraw_amount = bank_account1.withdraw(700)
+    print(f"Successfully withdrew ${withdraw_amount} to {bank_account1.name}'s account")
 
-# Print statement
-bank_account1.print_statement()
+    # Print statement
+    bank_account1.print_statement()
+    
+
+
 

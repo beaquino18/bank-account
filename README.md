@@ -5,7 +5,7 @@ This project is a simple command line interface where a user can do multiple onl
 The project is divided into 2 parts:
 
 - bank_account.py file is a simple command line interface that provides attributes and behaviors for BankAccount class
-- bank.py is a more interactive file where users can interact with program through various prompts
+- bank.py is a more interactive file where users can interact with program through various prompts. All data in this file can be stored and accessed in **data.txt** file
 
 # How to Run
 
